@@ -65,3 +65,6 @@ drag_vertical_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stop"]
 shape = SubResource("CapsuleShape2D_yh7bp")
+
+[connection signal="mouse_entered" from="Stop" to="." method="_OnStopMouseEntered"]
+[connection signal="mouse_exited" from="Stop" to="." method="_OnStopMouseExited"]
