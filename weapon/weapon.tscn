@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dq28pp4st576u"]
+
+[ext_resource type="Script" path="res://weapon/Weapon.cs" id="1_421lj"]
+[ext_resource type="Shader" path="res://weapon/weapon.gdshader" id="1_ghob1"]
+[ext_resource type="Texture2D" uid="uid://bs842e80h3yhc" path="res://weapon/assets/weapon1/weapon1.png" id="1_gr277"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cod3k"]
+resource_local_to_scene = true
+shader = ExtResource("1_ghob1")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7fsfy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gr277")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_421lj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_cod3k")
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_7fsfy")
+
+[node name="ShootPos" type="Marker2D" parent="."]
+position = Vector2(113, 6)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

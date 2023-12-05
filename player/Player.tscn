@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ob6vb047owyf"]
+[gd_scene load_steps=10 format=3 uid="uid://ob6vb047owyf"]
 
 [ext_resource type="Script" path="res://player/Player.cs" id="1_8c7rf"]
 [ext_resource type="Texture2D" uid="uid://c2olg8eg0hw8e" path="res://player/assets/player1/player1-sheet.png" id="1_xjwc1"]
+[ext_resource type="PackedScene" uid="uid://cx0ttc6usdvw" path="res://weapon/now_weapon.tscn" id="3_kt8u0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rojlo"]
 atlas = ExtResource("1_xjwc1")
@@ -46,6 +47,7 @@ height = 212.0
 [node name="Player" type="CharacterBody2D"]
 z_index = 20
 scale = Vector2(0.6, 0.6)
+collision_mask = 3
 script = ExtResource("1_8c7rf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -62,9 +64,12 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="Stop" type="Area2D" parent="."]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stop"]
 shape = SubResource("CapsuleShape2D_yh7bp")
+
+[node name="NowWeapon" parent="." instance=ExtResource("3_kt8u0")]
 
 [connection signal="mouse_entered" from="Stop" to="." method="_OnStopMouseEntered"]
 [connection signal="mouse_exited" from="Stop" to="." method="_OnStopMouseExited"]

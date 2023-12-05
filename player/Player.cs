@@ -25,6 +25,7 @@ public partial class Player : CharacterBody2D
 	public void choosePlayer(string type)
 	{
 		var playerPath = "res://player/assets/";
+		var playerSheetPath = $"{playerPath}{type}/{type}-sheet.png";
 		
 		_playerAnim.SpriteFrames.ClearAll();
 		var spriteFrameCustom = new SpriteFrames();
@@ -32,7 +33,7 @@ public partial class Player : CharacterBody2D
 		spriteFrameCustom.SetAnimationSpeed("default",7.0);
 		var textureSize = new Vector2(960, 240);
 		var spriteSize = new Vector2(240, 240);
-		var fullTexture = GD.Load<Texture2D>(playerPath + type + "/" + type + "-sheet.png");
+		var fullTexture = GD.Load<Texture2D>(playerSheetPath);
 
 		var numColumns = (int)(textureSize.X / spriteSize.X);
 		var numRow = (int)(textureSize.Y / spriteSize.Y);
@@ -43,8 +44,7 @@ public partial class Player : CharacterBody2D
 			{
 				var frmae = new AtlasTexture();
 				frmae.Atlas = fullTexture;
-				var regionVector2 = new Vector2(x, y);
-				frmae.Region = new Rect2((regionVector2 * spriteSize), spriteSize);
+				frmae.Region = new Rect2(x * spriteSize.X,y * spriteSize.Y, spriteSize);
 				spriteFrameCustom.AddFrame("default",frmae);
 			}
 		}
