@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class NowWeapon : Node2D
 {
@@ -11,7 +10,7 @@ public partial class NowWeapon : Node2D
 	public override void _Ready()
 	{
 		_weaponNum = GetChildCount();
-		var unit = (float)(Math.Tau / _weaponNum);
+		var unit = Mathf.Tau / _weaponNum;
 		var weapons = GetChildren();
 
 		for (int i = 0; i < weapons.Count; i++)
