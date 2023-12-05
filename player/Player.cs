@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Player : CharacterBody2D
 {
@@ -9,7 +8,7 @@ public partial class Player : CharacterBody2D
 
 	private float _speed = 700;
 
-	private bool flip = false;
+	private bool _flip = false;
 
 	private bool _canMove = true;
 
@@ -19,10 +18,10 @@ public partial class Player : CharacterBody2D
 	public override void _Ready()
 	{
 		_playerAnim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		choosePlayer("player2");
+		ChoosePlayer("player2");
 	}
 
-	public void choosePlayer(string type)
+	private void ChoosePlayer(string type)
 	{
 		var playerPath = "res://player/assets/";
 		var playerSheetPath = $"{playerPath}{type}/{type}-sheet.png";
@@ -42,10 +41,10 @@ public partial class Player : CharacterBody2D
 		{
 			for (int y = 0; y < numRow; y++)
 			{
-				var frmae = new AtlasTexture();
-				frmae.Atlas = fullTexture;
-				frmae.Region = new Rect2(x * spriteSize.X,y * spriteSize.Y, spriteSize);
-				spriteFrameCustom.AddFrame("default",frmae);
+				var frame = new AtlasTexture();
+				frame.Atlas = fullTexture;
+				frame.Region = new Rect2(x * spriteSize.X,y * spriteSize.Y, spriteSize);
+				spriteFrameCustom.AddFrame("default",frame);
 			}
 		}
 		_playerAnim.SpriteFrames = spriteFrameCustom;
@@ -59,16 +58,9 @@ public partial class Player : CharacterBody2D
 		var globalMousePos = GetGlobalMousePosition();
 		var selfPos = Position;
 
-		if (globalMousePos.X >= selfPos.X)
-		{
-			flip = false;
-		}
-		else
-		{
-			flip = true;
-		}
+		_flip = !(globalMousePos.X >= selfPos.X);
 
-		_playerAnim.FlipH = flip;
+		_playerAnim.FlipH = _flip;
 		
 		_dir = (globalMousePos - selfPos).Normalized();
 		if (!_canMove || _stop)

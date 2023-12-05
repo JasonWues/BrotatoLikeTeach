@@ -23,36 +23,26 @@ public partial class BgMap : Node2D
 	private void Random_tile()  
 	{
 		var random = new Random();
-		var useCells = new List<Vector2I>();
+		var usedCells = new HashSet<Vector2I>();
+		var grassCell = new Vector2I(18, 1);
+		var flowerCell = new Vector2I(9, 3);
+		var stoneCell = new Vector2I(6, 2);
+		var availableCells = _tileMap.GetUsedCells(0);
 
-		var bg1Cells = _tileMap.GetUsedCells(0);
-		
-		foreach (var cell in bg1Cells)
+		SetCellIfRandom(5, grassCell);
+		SetCellIfRandom(1, flowerCell);
+		SetCellIfRandom(2, stoneCell);
+		return;
+
+		void SetCellIfRandom(int chance, Vector2I cellType)
 		{
-			var num = random.Next(0, 100);
-			if (num <= 5)
+			foreach (var cell in availableCells)
 			{
-				_tileMap.SetCell(1,cell,0,new Vector2I(18,1));
-				useCells.Add(cell);
+				if (random.Next(0, 100) <= chance && usedCells.Add(cell))
+				{
+					_tileMap.SetCell(1, cell, 0, cellType);
+				}
 			}
 		}
-
-		var notUseCells = bg1Cells.Except(useCells).ToList();
-		useCells.Clear();
-		
-		foreach (var cell in from cell in notUseCells let num = random.Next(0, 100) where num <= 1 select cell)
-		{
-			_tileMap.SetCell(1,cell,0,new Vector2I(9,3));
-			useCells.Add(cell);
-		}
-
-		var notUseCells2 = notUseCells.Except(useCells);
-
-		foreach (var cell in from cell in notUseCells2 let num = random.Next(0,100) where num <= 2 select cell)
-		{
-			_tileMap.SetCell(2,cell,0,new Vector2I(6,2));
-		}
-		
-		
 	}
 }
