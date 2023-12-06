@@ -29,3 +29,12 @@ sprite_frames = SubResource("SpriteFrames_nar6u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qjur3")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_qjur3")
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="_OnArea2dBodyShapeEntered"]

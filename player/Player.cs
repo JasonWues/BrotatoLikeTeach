@@ -18,7 +18,7 @@ public partial class Player : CharacterBody2D
 	public override void _Ready()
 	{
 		_playerAnim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		ChoosePlayer("player2");
+		ChoosePlayer("player1");
 	}
 
 	private void ChoosePlayer(string type)

@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Bullet : CharacterBody2D
 {
@@ -19,5 +18,35 @@ public partial class Bullet : CharacterBody2D
 	{
 		Velocity = Dir * Speed;
 		MoveAndSlide();
+	}
+	
+	private void _OnArea2dBodyShapeEntered(Rid bodyRid, Node2D body, long bodyShapeIndex, long localShapeIndex)
+	{
+		if (body.IsInGroup("Enemy"))
+		{
+			if (body is Enemy enemy)
+			{
+				enemy.Hp -= 1;
+				if (enemy.Hp <= 0)
+				{
+					enemy.QueueFree();
+				}
+				QueueFree();
+			}
+		}
+		
+		
+		if (body is not TileMap tileMap)
+		{
+			return;
+		}
+		var coords = tileMap.GetCoordsForBodyRid(bodyRid);
+		var tileData = tileMap.GetCellTileData(2, coords);
+		var isWall = (bool)(tileData.GetCustomData("isWall"));
+		if (isWall)
+		{
+			QueueFree();
+		}
+		
 	}
 }

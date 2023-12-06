@@ -1,6 +1,6 @@
 using Godot;
-using System;
-using Godot.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class Weapon : Node2D
 {
@@ -10,8 +10,6 @@ public partial class Weapon : Node2D
 
 	private Timer _timer;
 
-	private Random _random = new Random();
-
 	private float _bulletShootTime = 0.5f;
 
 	private int _bulletSpeed = 2000;
@@ -19,8 +17,10 @@ public partial class Weapon : Node2D
 	private int _bulletHurt = 1;
 
 	private PackedScene _bullet;
+
+	private HashSet<Enemy> _enemies;
 	
-	readonly private static Dictionary<string, Color> WeaponLevel = new Dictionary<string, Color>()
+	readonly private static Godot.Collections.Dictionary<string, Color> WeaponLevel = new Godot.Collections.Dictionary<string, Color>()
 	{
 		{"level1",new Color("#b0c3d9")},
 		{"level2",new Color("#4b69ff")},
@@ -36,12 +36,21 @@ public partial class Weapon : Node2D
 		_shootPos = GetNode<Marker2D>("ShootPos");
 		_timer = GetNode<Timer>("Timer");
 		_bullet = GD.Load<PackedScene>("res://bullet/bullet.tscn");
-		((ShaderMaterial)_weaponAnimated.Material).SetShaderParameter("color",WeaponLevel[$"level{_random.Next(1,5)}"]);
+		_enemies = [];
+		((ShaderMaterial)_weaponAnimated.Material).SetShaderParameter("color",WeaponLevel[$"level{GD.RandRange(1,5)}"]);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (_enemies.Count > 0)
+		{
+			LookAt(_enemies.First().Position);
+		}
+		else
+		{
+			RotationDegrees = 0;
+		}
 	}
 	
 	private void _OnTimerTimeOut()
@@ -50,10 +59,30 @@ public partial class Weapon : Node2D
 		{
 			return;
 		}
-		nowBullet.Speed = _bulletSpeed;
-		nowBullet.Hurt = _bulletHurt;
-		nowBullet.Position = _shootPos.GlobalPosition;
-		nowBullet.Dir = new Vector2(1, 0);
-		GetTree().Root.AddChild(nowBullet);
+		if (_enemies.Count > 0)
+		{
+			nowBullet.Speed = _bulletSpeed;
+			nowBullet.Hurt = _bulletHurt;
+			nowBullet.Position = _shootPos.GlobalPosition;
+			nowBullet.Dir = (_enemies.First().GlobalPosition - nowBullet.Position).Normalized();
+			GetTree().Root.AddChild(nowBullet);
+		}
+	}
+	
+	private void _OnArea2dBodyEntered(Enemy body)
+	{
+		if (body.IsInGroup("Enemy") && _enemies.Add(body))
+		{
+			_enemies = _enemies.OrderBy(x => x.GlobalPosition.DistanceTo(GlobalPosition)).ToHashSet();
+		}
+	}
+	
+	private void _OnArea2dBodyExited(Enemy body)
+	{
+		if (body.IsInGroup("Enemy") && _enemies.Contains(body))
+		{
+			_enemies.Remove(body);
+			_enemies = _enemies.OrderBy(x => x.GlobalPosition.DistanceTo(GlobalPosition)).ToHashSet();
+		}
 	}
 }

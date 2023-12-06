@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Enemy : CharacterBody2D
 {
@@ -8,6 +7,8 @@ public partial class Enemy : CharacterBody2D
 	private int _speed = 300;
 
 	private Player _player;
+
+	public int Hp = 3;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -24,4 +25,5 @@ public partial class Enemy : CharacterBody2D
 
 		MoveAndSlide();
 	}
+
 }

@@ -43,7 +43,7 @@ animations = [{
 radius = 78.0
 height = 208.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 z_index = 14
 scale = Vector2(0.6, 0.6)
 collision_layer = 8

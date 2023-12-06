@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.Linq;
 
 public partial class NowEnemies : Node2D
 {
@@ -22,7 +20,7 @@ public partial class NowEnemies : Node2D
 	
 	private void _OnTimerTimeout()
 	{
-		var num = GD.RandRange(0, _tileMap.GetUsedCells(0).Count);
+		var num = GD.RandRange(0, _tileMap.GetUsedCells(0).Count - 1);
 		var localPos = _tileMap.MapToLocal(_tileMap.GetUsedCells(0)[num]);
 		var enemy = _enemy.Instantiate<CharacterBody2D>();
 		enemy.Position = localPos * new Vector2(6,6);

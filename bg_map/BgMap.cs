@@ -1,7 +1,5 @@
 using Godot;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 public partial class BgMap : Node2D
 {
@@ -22,7 +20,6 @@ public partial class BgMap : Node2D
 
 	private void Random_tile()  
 	{
-		var random = new Random();
 		var usedCells = new HashSet<Vector2I>();
 		var grassCell = new Vector2I(18, 1);
 		var flowerCell = new Vector2I(9, 3);
@@ -38,7 +35,7 @@ public partial class BgMap : Node2D
 		{
 			foreach (var cell in availableCells)
 			{
-				if (random.Next(0, 100) <= chance && usedCells.Add(cell))
+				if (GD.RandRange(1,100) <= chance && usedCells.Add(cell))
 				{
 					_tileMap.SetCell(1, cell, 0, cellType);
 				}

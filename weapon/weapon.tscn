@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dq28pp4st576u"]
+[gd_scene load_steps=7 format=3 uid="uid://dq28pp4st576u"]
 
 [ext_resource type="Script" path="res://weapon/Weapon.cs" id="1_421lj"]
 [ext_resource type="Shader" path="res://weapon/weapon.gdshader" id="1_ghob1"]
@@ -24,6 +24,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rnx25"]
+radius = 1146.13
+
 [node name="Weapon" type="Node2D"]
 script = ExtResource("1_421lj")
 
@@ -38,4 +41,13 @@ position = Vector2(113, 6)
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="ShootArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootArea"]
+shape = SubResource("CircleShape2D_rnx25")
+
 [connection signal="timeout" from="Timer" to="." method="_OnTimerTimeOut"]
+[connection signal="body_entered" from="ShootArea" to="." method="_OnArea2dBodyEntered"]
+[connection signal="body_exited" from="ShootArea" to="." method="_OnArea2dBodyExited"]
