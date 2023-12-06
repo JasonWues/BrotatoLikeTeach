@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bv6w2fcb5q3hd"]
+[gd_scene load_steps=3 format=3 uid="uid://bv6w2fcb5q3hd"]
 
 [ext_resource type="Script" path="res://enemy/NowEnemies.cs" id="1_4wmia"]
 

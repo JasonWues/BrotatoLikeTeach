@@ -242,8 +242,11 @@ animations = [{
 }]
 
 [node name="Animations" type="Node2D"]
+z_index = 15
 script = ExtResource("1_ohrqh")
 
 [node name="EnemyAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6nudi")
 animation = &"enemiesDead"
+
+[connection signal="animation_finished" from="EnemyAnimation" to="." method="_OnEnemyAnimationAnimationFinished"]

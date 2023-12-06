@@ -26,11 +26,7 @@ public partial class Bullet : CharacterBody2D
 		{
 			if (body is Enemy enemy)
 			{
-				enemy.Hp -= 1;
-				if (enemy.Hp <= 0)
-				{
-					enemy.QueueFree();
-				}
+				enemy.EnemyHurt(Hurt);
 				QueueFree();
 			}
 		}

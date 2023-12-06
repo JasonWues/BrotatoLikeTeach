@@ -1,7 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bf4f7a0fynyd2"]
+[gd_scene load_steps=11 format=3 uid="uid://bf4f7a0fynyd2"]
 
 [ext_resource type="Texture2D" uid="uid://bueyup11skcex" path="res://enemy/assets/enemy1/enemy-sheet.png" id="1_lvjwb"]
 [ext_resource type="Script" path="res://enemy/Enemy.cs" id="1_nnj8o"]
+[ext_resource type="Shader" path="res://enemy/flash.gdshader" id="2_v1hif"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dd6by"]
+resource_local_to_scene = true
+shader = ExtResource("2_v1hif")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_opacity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w30g8"]
 atlas = ExtResource("1_lvjwb")
@@ -51,6 +58,7 @@ collision_mask = 10
 script = ExtResource("1_nnj8o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_dd6by")
 sprite_frames = SubResource("SpriteFrames_ol8mg")
 autoplay = "default"
 
