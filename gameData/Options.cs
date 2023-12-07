@@ -1,7 +1,7 @@
 ﻿#nullable enable
 using Godot;
 
-namespace BrotatoLikeTeach.animations;
+namespace BrotatoLikeTeach.gameData;
 
 public class Options
 {

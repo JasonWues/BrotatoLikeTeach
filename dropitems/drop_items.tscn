@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyuyj558ybsi2"]
+
+[ext_resource type="Script" path="res://dropitems/DropItems.cs" id="1_k67nn"]
+[ext_resource type="Texture2D" uid="uid://be0s884aglpvr" path="res://dropitems/assets/gold.png" id="1_svwr4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ve6hp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_svwr4")
+}],
+"loop": true,
+"name": &"gold",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wxr2i"]
+radius = 5.0
+
+[node name="DropItems" type="CharacterBody2D" groups=["DropItem"]]
+z_index = 13
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_k67nn")
+
+[node name="GoldAnimated" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ve6hp")
+animation = &"gold"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wxr2i")

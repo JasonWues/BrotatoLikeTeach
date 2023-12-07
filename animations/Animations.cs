@@ -1,5 +1,5 @@
 using Godot;
-using BrotatoLikeTeach.animations;
+using BrotatoLikeTeach.gameData;
 
 public partial class Animations : Node2D
 {
@@ -16,6 +16,11 @@ public partial class Animations : Node2D
 	public void RunAnimation(Options options)
 	{
 		var temp = Duplicate() as Node2D;
+		
+		if (options.Node == null)
+		{
+			options.Node = Main.DuplicateNode;
+		}
 		
 		options.Node.AddChild(temp);
 		temp.Show();

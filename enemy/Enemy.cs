@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using BrotatoLikeTeach.animations;
+using BrotatoLikeTeach.gameData;
 using Godot;
 
 public partial class Enemy : CharacterBody2D
@@ -43,7 +43,7 @@ public partial class Enemy : CharacterBody2D
 			Scale = new Vector2(1,1)
 		};
 		await EnemyFlash();
-		GameMain.AnimationsScene.RunAnimation(options);
+		Main.AnimationsScene.RunAnimation(options);
 		if (Hp <= 0)
 		{
 			EnemyDead();
@@ -52,14 +52,18 @@ public partial class Enemy : CharacterBody2D
 
 	public void EnemyDead()
 	{
-		Options options = new Options
+		Main.AnimationsScene.RunAnimation(new Options()
 		{
-			Node = GameMain.DuplicateNode,
 			AnimationName = "enemiesDead",
 			Position = GlobalPosition,
 			Scale = new Vector2(0.7f,0.7f)
-		};
-		GameMain.AnimationsScene.RunAnimation(options);
+		});
+		Main.DropItemScene.GenDropItem(new Options()
+		{
+			AnimationName = "gold",
+			Position = GlobalPosition,
+			Scale = new Vector2(3,3)
+		});
 		QueueFree();
 	}
 

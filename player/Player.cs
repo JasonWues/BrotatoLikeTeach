@@ -95,6 +95,22 @@ public partial class Player : CharacterBody2D
 	{
 		_stop = false;
 	}
+	
+	private void _OnDropItemAreaBodyEntered(Node2D body)
+	{
+		if (body.IsInGroup("DropItem") && body is DropItems dropItems)
+		{
+			dropItems.CanMoving = true;
+		}
+	}
+	
+	private void _OnStopBodyEntered(Node2D body)
+	{
+		if (body.IsInGroup("DropItem") && body is DropItems dropItems)
+		{
+			dropItems.QueueFree();
+		}
+	}
 
 }
 
