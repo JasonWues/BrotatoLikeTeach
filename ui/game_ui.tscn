@@ -1,0 +1,165 @@
+[gd_scene load_steps=6 format=3 uid="uid://jal1chskey7g"]
+
+[ext_resource type="Script" path="res://ui/GameUI.cs" id="1_5x3hj"]
+[ext_resource type="Texture2D" uid="uid://be0s884aglpvr" path="res://dropitems/assets/gold.png" id="1_bdfhd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8o1c"]
+bg_color = Color(0.384314, 0.376471, 0.376471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ouejm"]
+bg_color = Color(1, 0.298039, 0.298039, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvs7f"]
+bg_color = Color(0.313726, 0.682353, 0.329412, 1)
+
+[node name="GameUi" type="CanvasLayer"]
+script = ExtResource("1_5x3hj")
+
+[node name="Status" type="MarginContainer" parent="."]
+offset_top = 28.0
+offset_right = 450.0
+offset_bottom = 170.0
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Status"]
+layout_mode = 2
+
+[node name="HpValue" type="MarginContainer" parent="Status/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Status/VBoxContainer/HpValue"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Status/VBoxContainer/HpValue/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 35
+text = "HP:"
+horizontal_alignment = 2
+
+[node name="HpValueBar" type="ProgressBar" parent="Status/VBoxContainer/HpValue/HBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_t8o1c")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ouejm")
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Status/VBoxContainer/HpValue/HBoxContainer/HpValueBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.5
+offset_top = -11.5
+offset_right = 30.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "80 / 100"
+
+[node name="ColorRect" type="ColorRect" parent="Status/VBoxContainer/HpValue/HBoxContainer/HpValueBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ExpValue" type="MarginContainer" parent="Status/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Status/VBoxContainer/ExpValue"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Status/VBoxContainer/ExpValue/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 35
+text = "EXP:"
+horizontal_alignment = 2
+
+[node name="ExpValueBar" type="ProgressBar" parent="Status/VBoxContainer/ExpValue/HBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_t8o1c")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xvs7f")
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Status/VBoxContainer/ExpValue/HBoxContainer/ExpValueBar"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -17.5
+offset_right = -10.0
+offset_bottom = 17.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "LV.1"
+horizontal_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="Status/VBoxContainer/ExpValue/HBoxContainer/ExpValueBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Gold" type="Label" parent="."]
+offset_left = 112.0
+offset_top = 178.0
+offset_right = 181.0
+offset_bottom = 233.0
+theme_override_font_sizes/font_size = 40
+text = "100"
+
+[node name="Control" type="Control" parent="Gold"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -31.985
+offset_right = -31.985
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Gold/Control"]
+scale = Vector2(3.15563, 3.15563)
+texture = ExtResource("1_bdfhd")

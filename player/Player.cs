@@ -1,7 +1,12 @@
+using BrotatoLikeTeach.gameData;
 using Godot;
 
 public partial class Player : CharacterBody2D
 {
+	
+	[Signal]
+	public delegate void StatusChangeEventHandler(PlayerStatus playerStatus);
+	
 	private AnimatedSprite2D _playerAnim;
 
 	private Vector2 _dir;
@@ -13,11 +18,15 @@ public partial class Player : CharacterBody2D
 	private bool _canMove = true;
 
 	private bool _stop = false;
+
+	public PlayerStatus PlayerStatus;
+	
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_playerAnim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		PlayerStatus = new PlayerStatus();
 		ChoosePlayer("player1");
 	}
 
@@ -28,7 +37,6 @@ public partial class Player : CharacterBody2D
 		
 		_playerAnim.SpriteFrames.ClearAll();
 		var spriteFrameCustom = new SpriteFrames();
-		spriteFrameCustom.SetAnimationLoop("default",true);
 		spriteFrameCustom.SetAnimationSpeed("default",7.0);
 		var textureSize = new Vector2(960, 240);
 		var spriteSize = new Vector2(240, 240);
@@ -69,7 +77,6 @@ public partial class Player : CharacterBody2D
 		}
 		Velocity = _dir * _speed;
 		MoveAndSlide();
-		GD.Print(globalMousePos);
 	}
 
 	public override void _Input(InputEvent @event)
@@ -100,12 +107,26 @@ public partial class Player : CharacterBody2D
 	{
 		if (body.IsInGroup("DropItem") && body is DropItems dropItems)
 		{
+			PlayerStatus.NowExp += 1;
+			PlayerStatus.Gold += 1;
+			if (PlayerStatus.NowExp >= PlayerStatus.MaxExp)
+			{
+				PlayerStatus.Level++;
+				PlayerStatus.NowExp = 0;
+			}
+			EmitSignal(SignalName.StatusChange,PlayerStatus);
 			dropItems.CanMoving = true;
 		}
 	}
 	
 	private void _OnStopBodyEntered(Node2D body)
 	{
+		if (body.IsInGroup("Enemy") && body is Enemy enemy)
+		{
+			PlayerStatus.NowHp -= 1;
+			EmitSignal(SignalName.StatusChange,PlayerStatus);
+		}
+		
 		if (body.IsInGroup("DropItem") && body is DropItems dropItems)
 		{
 			dropItems.QueueFree();

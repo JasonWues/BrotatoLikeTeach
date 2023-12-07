@@ -36,7 +36,7 @@ public partial class Main : Node
 		}
 		Node2D node2D = new Node2D();
 		node2D.Name = "DuplicateNode";
-		GetWindow().CallDeferred("add_child", node2D);
+		GetWindow().CallDeferred(Node.MethodName.AddChild, node2D);
 		DuplicateNode = node2D;
 	}
 }

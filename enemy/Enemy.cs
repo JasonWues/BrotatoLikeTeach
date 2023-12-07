@@ -13,7 +13,7 @@ public partial class Enemy : CharacterBody2D
 	private AnimatedSprite2D _animatedSprite2D;
 
 	[Export]
-	public int Hp = 5;
+	public int Hp = 3;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

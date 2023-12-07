@@ -39,11 +39,11 @@ public partial class DropItems : CharacterBody2D
 		{
 			options.Node = Main.DuplicateNode;
 		}
-		options.Node.AddChild(temp);
-		temp.Show();
+		options.Node.CallDeferred(Node.MethodName.AddChild, temp);
+		temp.CallDeferred(CanvasItem.MethodName.Show);
+		temp.CallDeferred(CollisionObject2D.MethodName.SetCollisionLayerValue,5,true);
 		temp.Scale = options.Scale ?? new Vector2(1, 1);
 		temp.Position = options.Position;
-		temp.SetCollisionLayerValue(5,true);
 		temp.GetNode<AnimatedSprite2D>("GoldAnimated").Play(options.AnimationName);
 	}
 }
