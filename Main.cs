@@ -1,18 +1,19 @@
 using Godot;
-using System;
 
 public partial class Main : Node
 {
-	//动效
-	private PackedScene _animationsPackedScene;
 	public static Animations AnimationsScene;
-	
-	//掉落物
-	private PackedScene _dropItemPackedScene;
+
 	public static DropItems DropItemScene;
 
 	public static Node2D DuplicateNode;
-	
+
+	//动效
+	private PackedScene _animationsPackedScene;
+
+	//掉落物
+	private PackedScene _dropItemPackedScene;
+
 	public override void _Ready()
 	{
 		InitDuplicateNode();
@@ -27,14 +28,14 @@ public partial class Main : Node
 	public override void _Process(double delta)
 	{
 	}
-	
+
 	private void InitDuplicateNode()
 	{
 		if (DuplicateNode != null)
 		{
 			DuplicateNode.QueueFree();
 		}
-		Node2D node2D = new Node2D();
+		var node2D = new Node2D();
 		node2D.Name = "DuplicateNode";
 		GetWindow().CallDeferred(Node.MethodName.AddChild, node2D);
 		DuplicateNode = node2D;

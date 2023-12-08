@@ -3,25 +3,25 @@ using Godot;
 
 public partial class Player : CharacterBody2D
 {
-	
+
 	[Signal]
 	public delegate void StatusChangeEventHandler(PlayerStatus playerStatus);
-	
-	private AnimatedSprite2D _playerAnim;
-
-	private Vector2 _dir;
-
-	private float _speed = 700;
-
-	private bool _flip = false;
 
 	private bool _canMove = true;
 
-	private bool _stop = false;
+	private Vector2 _dir;
+
+	private bool _flip;
+
+	private AnimatedSprite2D _playerAnim;
+
+	private float _speed = 700;
+
+	private bool _stop;
 
 	public PlayerStatus PlayerStatus;
-	
-	
+
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -34,29 +34,27 @@ public partial class Player : CharacterBody2D
 	{
 		var playerPath = "res://player/assets/";
 		var playerSheetPath = $"{playerPath}{type}/{type}-sheet.png";
-		
+
 		_playerAnim.SpriteFrames.ClearAll();
 		var spriteFrameCustom = new SpriteFrames();
-		spriteFrameCustom.SetAnimationSpeed("default",7.0);
+		spriteFrameCustom.SetAnimationSpeed("default", 7.0);
 		var textureSize = new Vector2(960, 240);
 		var spriteSize = new Vector2(240, 240);
 		var fullTexture = GD.Load<Texture2D>(playerSheetPath);
 
 		var numColumns = (int)(textureSize.X / spriteSize.X);
 		var numRow = (int)(textureSize.Y / spriteSize.Y);
-		
-		for (int x = 0; x < numColumns; x++)
+
+		for (var x = 0; x < numColumns; x++)
+		for (var y = 0; y < numRow; y++)
 		{
-			for (int y = 0; y < numRow; y++)
-			{
-				var frame = new AtlasTexture();
-				frame.Atlas = fullTexture;
-				frame.Region = new Rect2(x * spriteSize.X,y * spriteSize.Y, spriteSize);
-				spriteFrameCustom.AddFrame("default",frame);
-			}
+			var frame = new AtlasTexture();
+			frame.Atlas = fullTexture;
+			frame.Region = new Rect2(x * spriteSize.X, y * spriteSize.Y, spriteSize);
+			spriteFrameCustom.AddFrame("default", frame);
 		}
 		_playerAnim.SpriteFrames = spriteFrameCustom;
-		
+
 		_playerAnim.Play("default");
 	}
 
@@ -69,7 +67,7 @@ public partial class Player : CharacterBody2D
 		_flip = !(globalMousePos.X >= selfPos.X);
 
 		_playerAnim.FlipH = _flip;
-		
+
 		_dir = (globalMousePos - selfPos).Normalized();
 		if (!_canMove || _stop)
 		{
@@ -91,18 +89,18 @@ public partial class Player : CharacterBody2D
 		}
 		base._Input(@event);
 	}
-	
+
 	private void _OnStopMouseEntered()
 	{
 		_stop = true;
 		// Replace with function body.
 	}
-	
+
 	private void _OnStopMouseExited()
 	{
 		_stop = false;
 	}
-	
+
 	private void _OnDropItemAreaBodyEntered(Node2D body)
 	{
 		if (body.IsInGroup("DropItem") && body is DropItems dropItems)
@@ -114,24 +112,22 @@ public partial class Player : CharacterBody2D
 				PlayerStatus.Level++;
 				PlayerStatus.NowExp = 0;
 			}
-			EmitSignal(SignalName.StatusChange,PlayerStatus);
+			EmitSignal(SignalName.StatusChange, PlayerStatus);
 			dropItems.CanMoving = true;
 		}
 	}
-	
+
 	private void _OnStopBodyEntered(Node2D body)
 	{
 		if (body.IsInGroup("Enemy") && body is Enemy enemy)
 		{
 			PlayerStatus.NowHp -= 1;
-			EmitSignal(SignalName.StatusChange,PlayerStatus);
+			EmitSignal(SignalName.StatusChange, PlayerStatus);
 		}
-		
+
 		if (body.IsInGroup("DropItem") && body is DropItems dropItems)
 		{
 			dropItems.QueueFree();
 		}
 	}
-
 }
-

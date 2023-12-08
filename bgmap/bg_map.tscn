@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://34xurf2hxpkp"]
 
-[ext_resource type="Script" path="res://bg_map/BgMap.cs" id="1_1saom"]
-[ext_resource type="Texture2D" uid="uid://c0nyaxteon31x" path="res://bg_map/bg.png" id="1_rss1b"]
+[ext_resource type="Script" path="res://bgmap/BgMap.cs" id="1_1saom"]
+[ext_resource type="Texture2D" uid="uid://c0nyaxteon31x" path="res://bgmap/bg.png" id="1_rss1b"]
 [ext_resource type="PackedScene" uid="uid://ob6vb047owyf" path="res://player/Player.tscn" id="3_a33an"]
 [ext_resource type="PackedScene" uid="uid://bv6w2fcb5q3hd" path="res://enemy/now_enemies.tscn" id="4_3hvx1"]
 [ext_resource type="PackedScene" uid="uid://jal1chskey7g" path="res://ui/game_ui.tscn" id="5_418s3"]
@@ -109,3 +109,4 @@ position = Vector2(1221, 903)
 [node name="GameUi" parent="." instance=ExtResource("5_418s3")]
 
 [connection signal="StatusChange" from="Player" to="GameUi" method="_OnPlayerStatusChange"]
+[connection signal="RoundEnd" from="GameUi" to="." method="_OnGameUiRoundEnd"]

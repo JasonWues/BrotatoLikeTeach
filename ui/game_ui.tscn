@@ -163,3 +163,44 @@ grow_vertical = 2
 [node name="Sprite2D" type="Sprite2D" parent="Gold/Control"]
 scale = Vector2(3.15563, 3.15563)
 texture = ExtResource("1_bdfhd")
+
+[node name="CountDown" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = -20.0
+grow_horizontal = 2
+
+[node name="NowRound" type="Label" parent="CountDown"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -92.0
+offset_top = 19.0
+offset_right = 54.0
+offset_bottom = 84.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "第1波"
+horizontal_alignment = 1
+
+[node name="TimeShow" type="Label" parent="CountDown"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -55.0
+offset_top = 84.0
+offset_right = 23.0
+offset_bottom = 139.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "30"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="CountDown"]
+
+[connection signal="timeout" from="CountDown/Timer" to="." method="_OnTimerTimeout"]

@@ -1,20 +1,20 @@
-using Godot;
 using BrotatoLikeTeach.gameData;
+using Godot;
 
 public partial class DropItems : CharacterBody2D
 {
-
-	public bool CanMoving;
 	private Player _player;
 
 	private float _speed = 1500;
-	
-	
+
+	public bool CanMoving;
+
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		Hide();
-		SetCollisionLayerValue(5,false);
+		SetCollisionLayerValue(5, false);
 		_player = (Player)GetTree().GetFirstNodeInGroup("Player");
 	}
 
@@ -41,7 +41,7 @@ public partial class DropItems : CharacterBody2D
 		}
 		options.Node.CallDeferred(Node.MethodName.AddChild, temp);
 		temp.CallDeferred(CanvasItem.MethodName.Show);
-		temp.CallDeferred(CollisionObject2D.MethodName.SetCollisionLayerValue,5,true);
+		temp.CallDeferred(CollisionObject2D.MethodName.SetCollisionLayerValue, 5, true);
 		temp.Scale = options.Scale ?? new Vector2(1, 1);
 		temp.Position = options.Position;
 		temp.GetNode<AnimatedSprite2D>("GoldAnimated").Play(options.AnimationName);

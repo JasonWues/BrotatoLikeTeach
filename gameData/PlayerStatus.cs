@@ -14,5 +14,5 @@ public partial class PlayerStatus : GodotObject
 
     public int Level { get; set; } = 1;
 
-    public int Gold {get;set;}
+    public int Gold { get; set; }
 }

@@ -4,17 +4,18 @@ using Godot;
 
 public partial class Enemy : CharacterBody2D
 {
-	private Vector2 _dir;
-
-	private int _speed = 300;
-
-	private Player _player;
 
 	private AnimatedSprite2D _animatedSprite2D;
 
+	private Vector2 _dir;
+
+	private Player _player;
+
+	private int _speed = 300;
+
 	[Export]
 	public int Hp = 3;
-	
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -35,12 +36,12 @@ public partial class Enemy : CharacterBody2D
 	public async void EnemyHurt(int hurt)
 	{
 		Hp -= hurt;
-		Options options = new Options
+		var options = new Options
 		{
 			Node = this,
 			AnimationName = "enemiesHurt",
-			Position = new Vector2(1,1),
-			Scale = new Vector2(1,1)
+			Position = new Vector2(1, 1),
+			Scale = new Vector2(1, 1)
 		};
 		await EnemyFlash();
 		Main.AnimationsScene.RunAnimation(options);
@@ -52,27 +53,26 @@ public partial class Enemy : CharacterBody2D
 
 	public void EnemyDead()
 	{
-		Main.AnimationsScene.RunAnimation(new Options()
+		Main.AnimationsScene.RunAnimation(new Options
 		{
 			AnimationName = "enemiesDead",
 			Position = GlobalPosition,
-			Scale = new Vector2(0.7f,0.7f)
+			Scale = new Vector2(0.7f, 0.7f)
 		});
-		Main.DropItemScene.GenDropItem(new Options()
+		Main.DropItemScene.GenDropItem(new Options
 		{
 			AnimationName = "gold",
 			Position = GlobalPosition,
-			Scale = new Vector2(3,3)
+			Scale = new Vector2(3, 3)
 		});
 		QueueFree();
 	}
 
 	public async Task EnemyFlash()
 	{
-		((ShaderMaterial)_animatedSprite2D.Material).SetShaderParameter("flash_opacity",1);
+		((ShaderMaterial)_animatedSprite2D.Material).SetShaderParameter("flash_opacity", 1);
 		await ToSignal(GetTree().CreateTimer(0.1), SceneTreeTimer.SignalName.Timeout);
-		((ShaderMaterial)_animatedSprite2D.Material).SetShaderParameter("flash_opacity",0);
-		
-	}
+		((ShaderMaterial)_animatedSprite2D.Material).SetShaderParameter("flash_opacity", 0);
 
+	}
 }

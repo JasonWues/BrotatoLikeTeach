@@ -1,10 +1,10 @@
-using Godot;
 using System.Collections.Generic;
+using Godot;
 
 public partial class BgMap : Node2D
 {
 	private TileMap _tileMap;
-	
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -15,10 +15,10 @@ public partial class BgMap : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
+
 	}
 
-	private void Random_tile()  
+	private void Random_tile()
 	{
 		var usedCells = new HashSet<Vector2I>();
 		var grassCell = new Vector2I(18, 1);
@@ -34,12 +34,16 @@ public partial class BgMap : Node2D
 		void SetCellIfRandom(int chance, Vector2I cellType)
 		{
 			foreach (var cell in availableCells)
-			{
-				if (GD.RandRange(1,100) <= chance && usedCells.Add(cell))
+				if (GD.RandRange(1, 100) <= chance && usedCells.Add(cell))
 				{
 					_tileMap.SetCell(1, cell, 0, cellType);
 				}
-			}
 		}
 	}
+	
+	private void _OnGameUiRoundEnd()
+	{
+		// Replace with function body.
+	}
+
 }
