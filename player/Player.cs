@@ -14,12 +14,12 @@ public partial class Player : CharacterBody2D
 	private bool _flip;
 
 	private AnimatedSprite2D _playerAnim;
-
-	private float _speed = 700;
-
+	
 	private bool _stop;
 
 	public PlayerStatus PlayerStatus;
+
+	public int LevelAddNum = 0;
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -73,7 +73,7 @@ public partial class Player : CharacterBody2D
 		{
 			return;
 		}
-		Velocity = _dir * _speed;
+		Velocity = _dir * PlayerStatus.Speed;
 		MoveAndSlide();
 	}
 

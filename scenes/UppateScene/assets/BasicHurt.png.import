@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq0acf63kpiou"
-path="res://.godot/imported/max_hp.png-06cf080dae0eec958108837cf2335db9.ctex"
+uid="uid://qt1q1uryw7my"
+path="res://.godot/imported/BasicHurt.png-eb0589b7adc8d8f66260e12c07c9e836.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/UppateScene/assets/max_hp.png"
-dest_files=["res://.godot/imported/max_hp.png-06cf080dae0eec958108837cf2335db9.ctex"]
+source_file="res://scenes/UppateScene/assets/BasicHurt.png"
+dest_files=["res://.godot/imported/BasicHurt.png-eb0589b7adc8d8f66260e12c07c9e836.ctex"]
 
 [params]
 

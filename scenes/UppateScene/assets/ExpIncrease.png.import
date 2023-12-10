@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qt1q1uryw7my"
-path="res://.godot/imported/basic_hurt.png-312fe2e8397321a944fdb3f0d9fbdc46.ctex"
+uid="uid://i6uj18exfvqb"
+path="res://.godot/imported/ExpIncrease.png-559e52e34127874149a487d29e1dbf52.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/UppateScene/assets/basic_hurt.png"
-dest_files=["res://.godot/imported/basic_hurt.png-312fe2e8397321a944fdb3f0d9fbdc46.ctex"]
+source_file="res://scenes/UppateScene/assets/ExpIncrease.png"
+dest_files=["res://.godot/imported/ExpIncrease.png-559e52e34127874149a487d29e1dbf52.ctex"]
 
 [params]
 

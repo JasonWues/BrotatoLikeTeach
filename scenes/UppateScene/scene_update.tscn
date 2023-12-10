@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dxrkd77lndw6c"]
 
-[ext_resource type="Texture2D" uid="uid://qt1q1uryw7my" path="res://scenes/UppateScene/assets/basic_hurt.png" id="1_fb4fg"]
+[ext_resource type="Texture2D" uid="uid://qt1q1uryw7my" path="res://scenes/UppateScene/assets/BasicHurt.png" id="1_fb4fg"]
 [ext_resource type="Script" path="res://scenes/UppateScene/SceneUpdate.cs" id="1_of1dp"]
 [ext_resource type="Texture2D" uid="uid://be0s884aglpvr" path="res://dropitems/assets/gold.png" id="2_uao3g"]
 

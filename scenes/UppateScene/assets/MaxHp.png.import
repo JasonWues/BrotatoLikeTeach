@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b66di1til3sux"
-path="res://.godot/imported/gold_get.png-c400d6a8be356132ddced5bbe56e0419.ctex"
+uid="uid://cq0acf63kpiou"
+path="res://.godot/imported/MaxHp.png-3d9c4451ffc362c33042c068a5199e9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/UppateScene/assets/gold_get.png"
-dest_files=["res://.godot/imported/gold_get.png-c400d6a8be356132ddced5bbe56e0419.ctex"]
+source_file="res://scenes/UppateScene/assets/MaxHp.png"
+dest_files=["res://.godot/imported/MaxHp.png-3d9c4451ffc362c33042c068a5199e9f.ctex"]
 
 [params]
 

@@ -1,0 +1,32 @@
+{
+  "BasicHurt": {
+    "group": "attack",
+    "type": "type1",
+    "range": "1-5"
+  },
+  "BasicHurtMultiple": {
+    "group": "attack",
+    "type": "type2",
+    "range": "2-4"
+  },
+  "Speed": {
+    "group": "speed",
+    "type": "type1",
+    "range": "50-200"
+  },
+  "MaxHp": {
+    "group": "hp",
+    "type": "type1",
+    "range": "1-10"
+  },
+  "GoldIncrease": {
+    "group": "Increase",
+    "type": "type1",
+    "range": "1-5"
+  },
+  "ExpIncrease": {
+    "group": "Increase",
+    "type": "type2",
+    "range": "1-5"
+  }
+}

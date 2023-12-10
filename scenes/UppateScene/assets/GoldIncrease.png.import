@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i6uj18exfvqb"
-path="res://.godot/imported/exp_get.png-8013a130f3ff964492e4f44d8f73e62c.ctex"
+uid="uid://b66di1til3sux"
+path="res://.godot/imported/GoldIncrease.png-d56edfdebb40f8755272551572ec00a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/UppateScene/assets/exp_get.png"
-dest_files=["res://.godot/imported/exp_get.png-8013a130f3ff964492e4f44d8f73e62c.ctex"]
+source_file="res://scenes/UppateScene/assets/GoldIncrease.png"
+dest_files=["res://.godot/imported/GoldIncrease.png-d56edfdebb40f8755272551572ec00a2.ctex"]
 
 [params]
 
