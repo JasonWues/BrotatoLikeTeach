@@ -1,38 +1,52 @@
 {
   "attack": {
     "name": "攻击力",
-    "type1": {
-      "name": "基础攻击叠加",
-      "img": "BasicHurt"
-    },
-    "type2": {
-      "name": "基础伤害倍率",
-      "img": "BasicHurt"
-    }
+    "type": [
+      {
+        "id": "type1",
+        "name": "基础攻击叠加",
+        "img": "BasicHurt"
+      },
+      {
+        "id": "type2",
+        "name": "基础伤害倍率",
+        "img": "BasicHurt"
+      }
+    ]
   },
   "speed": {
     "name": "速度",
-    "type1": {
-      "name": "移动速度",
-      "img": "Speed"
-    }
+    "type": [
+      {
+        "id": "type1",
+        "name": "移动速度",
+        "img": "Speed"
+      }
+    ]
   },
   "hp": {
     "name": "血量",
-    "type1": {
-      "name": "最大血量",
-      "img": "MaxHp"
-    }
+    "type": [
+      {
+        "id": "type1",
+        "name": "最大血量",
+        "img": "MaxHp"
+      }
+    ]
   },
   "Increase": {
     "name": "获取叠加",
-    "type1": {
-      "name": "金币获取叠加",
-      "img": "GoldIncrease"
-    },
-    "type2": {
-      "name": "经验获取叠加",
-      "img": "ExpIncrease"
-    }
+    "type": [
+      {
+        "id": "type1",
+        "name": "金币获取叠加",
+        "img": "GoldIncrease"
+      },
+      {
+        "id": "type2",
+        "name": "经验获取叠加",
+        "img": "ExpIncrease"
+      }
+    ]
   }
 }

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://34xurf2hxpkp"]
+[gd_scene load_steps=9 format=3 uid="uid://34xurf2hxpkp"]
 
 [ext_resource type="Script" path="res://bgmap/BgMap.cs" id="1_1saom"]
 [ext_resource type="Texture2D" uid="uid://c0nyaxteon31x" path="res://bgmap/bg.png" id="1_rss1b"]
 [ext_resource type="PackedScene" uid="uid://ob6vb047owyf" path="res://player/Player.tscn" id="3_a33an"]
 [ext_resource type="PackedScene" uid="uid://bv6w2fcb5q3hd" path="res://enemy/now_enemies.tscn" id="4_3hvx1"]
 [ext_resource type="PackedScene" uid="uid://jal1chskey7g" path="res://ui/game_ui.tscn" id="5_418s3"]
+[ext_resource type="PackedScene" uid="uid://dxrkd77lndw6c" path="res://scenes/UppateScene/scene_update.tscn" id="6_tshnh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_820j7"]
 texture = ExtResource("1_rss1b")
@@ -107,6 +108,8 @@ position = Vector2(1221, 903)
 [node name="NowEnemies" parent="." instance=ExtResource("4_3hvx1")]
 
 [node name="GameUi" parent="." instance=ExtResource("5_418s3")]
+
+[node name="SceneUpdate" parent="." instance=ExtResource("6_tshnh")]
 
 [connection signal="StatusChange" from="Player" to="GameUi" method="_OnPlayerStatusChange"]
 [connection signal="RoundEnd" from="GameUi" to="." method="_OnGameUiRoundEnd"]
