@@ -4,9 +4,8 @@ using Godot;
 
 public partial class Weapon : Node2D
 {
-
-    readonly private static Godot.Collections.Dictionary<string, Color> WeaponLevel =
-        new Godot.Collections.Dictionary<string, Color>
+    readonly private static Dictionary<string, Color> WeaponLevel =
+        new Dictionary<string, Color>
         {
             { "level1", new Color("#b0c3d9") },
             { "level2", new Color("#4b69ff") },

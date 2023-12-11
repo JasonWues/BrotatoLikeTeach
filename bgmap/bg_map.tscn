@@ -110,6 +110,7 @@ position = Vector2(1221, 903)
 [node name="GameUi" parent="." instance=ExtResource("5_418s3")]
 
 [node name="SceneUpdate" parent="." instance=ExtResource("6_tshnh")]
+visible = false
 
 [connection signal="StatusChange" from="Player" to="GameUi" method="_OnPlayerStatusChange"]
 [connection signal="RoundEnd" from="GameUi" to="." method="_OnGameUiRoundEnd"]
