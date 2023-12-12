@@ -4,6 +4,8 @@
         <EnableDynamicLoading>true</EnableDynamicLoading>
     </PropertyGroup>
     <ItemGroup>
+        <Content Include="localization\player.csv" />
+        <Content Include="localization\player.csv.import" />
         <Content Include="playerattributes\AttrData.json"/>
         <Content Include="playerattributes\PlayerAttr.json"/>
     </ItemGroup>

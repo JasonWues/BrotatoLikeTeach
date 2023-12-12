@@ -16,6 +16,7 @@ content_margin_left = 10.0
 bg_color = Color(1, 1, 1, 1)
 
 [node name="SceneUpdate" type="CanvasLayer"]
+process_mode = 2
 script = ExtResource("1_of1dp")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -187,9 +188,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="AttrTemplate" type="HBoxContainer" parent="AttrValuePanel/MarginContainer/ScrollContainer/AttrList"]
+visible = false
 layout_mode = 2
 
-[node name="AttaName" type="Label" parent="AttrValuePanel/MarginContainer/ScrollContainer/AttrList/AttrTemplate"]
+[node name="AttrName" type="Label" parent="AttrValuePanel/MarginContainer/ScrollContainer/AttrList/AttrTemplate"]
 layout_mode = 2
 text = "最大血量"
 

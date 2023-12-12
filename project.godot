@@ -36,6 +36,10 @@ project/assembly_name="BrotatoLikeTeach"
 import/blender/enabled=false
 import/fbx/enabled=false
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://localization/player.en.translation", "res://localization/player.zh.translation")
+
 [layer_names]
 
 2d_physics/layer_1="player"

@@ -5,10 +5,13 @@ public partial class BgMap : Node2D
 {
 	private TileMap _tileMap;
 
+	private SceneUpdate _sceneUpdate;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_tileMap = GetNode<TileMap>("TileMap");
+		_sceneUpdate = GetNode<SceneUpdate>("SceneUpdate");
 		RandomTile();
 	}
 
@@ -43,6 +46,7 @@ public partial class BgMap : Node2D
 
 	private void _OnGameUiRoundEnd()
 	{
-		// Replace with function body.
+		GetTree().Paused = true;
+		_sceneUpdate.Init();
 	}
 }
